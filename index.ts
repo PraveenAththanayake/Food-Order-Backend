@@ -1,10 +1,10 @@
 import express from "express";
+import { AdminRoute, VandorRoute } from "./routes";
 
 const app = express();
 
-app.use("/", (req, res) => {
-  return res.json("Hello World");
-});
+app.use("/admin", AdminRoute);
+app.use("/vandor", VandorRoute);
 
 app.listen(8000, () => {
   console.log("Server is running on port 8000");
