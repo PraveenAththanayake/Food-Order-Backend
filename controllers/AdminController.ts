@@ -57,8 +57,18 @@ export const GetVendor = (
   next: NextFunction
 ) => {};
 
-export const GetVendorById = (
+export const GetVendorById = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {};
+) => {
+  const vandorId = req.params.id;
+
+  const vandor = await Vandor.findById(vandorId);
+
+  if (vandor != null) {
+    return res.json(vandor);
+  }
+
+  return res.json({ message: "No vandor found with this id" });
+};
